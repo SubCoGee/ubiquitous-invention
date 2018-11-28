@@ -1,0 +1,103 @@
+/*
+ * main.c
+ *
+ *  Created on: 20 Nov 2018
+ *      Author: admin
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
+#define CLRSCR() system ("cls")
+
+struct mitarbeiter_infos
+{
+	char	name[16];
+	int		rufnummer;
+	char	abteilung;
+}mitarbeiter[100];
+
+
+
+
+void eingeben()
+
+{
+
+	{
+		CLRSCR();
+		printf ("\nHier ist die Funktion eingeben!\n");
+
+		printf 	("\nGeben Sie den Namen ein\n");
+		scanf	("%15s", mitarbeiter[0].name);
+		fflush	(stdin);
+
+		printf 	("\nGeben Sie die Rufnummer ein\n");
+		scanf	("%4d", &mitarbeiter[0].rufnummer);
+		fflush	(stdin);
+
+		printf 	("\nGeben Sie die Abteilung ein\n");
+		scanf	("%1c", &mitarbeiter[0].abteilung);
+		fflush	(stdin);
+
+		printf	("Eingabe wurde gespeichert\n");
+		printf	("Druecken Sie eine beliebige Taste -> Hauptmenu\n");
+	}
+
+}
+
+void ausgeben()
+{
+	CLRSCR();
+	printf	("\n\t\tMitarbeiter Verzeichnis\n\n");
+
+	printf	("Name \t\t\t Rufnummer\t\t Abteilung");
+	printf	("\n\n%-s", mitarbeiter[0].name);
+	printf	("\t\t\t%d", mitarbeiter[0].rufnummer);
+	printf	("\t\t\t%c", mitarbeiter[0].abteilung);
+}
+
+void menue()
+{
+	int zahl;
+	do
+	{
+		CLRSCR();
+		printf ("\nHier ist die Funktion menue!\n");
+		printf ("\nMitarbeiter-Verzeichnis \n");
+		printf ("\nMitarbeiter eingeben\t1\n");
+		printf ("\nMitarbeiter ausgeben\t2\n");
+		printf ("\nProgramm beenden\t3\n");
+		printf ("\nBitte waehlen Sie: \n");
+
+		zahl = getchar();
+		fflush(stdin);
+
+		switch(zahl)
+		{
+			case '1':	eingeben();
+						break;
+
+			case '2':	ausgeben();
+						break;
+
+			case '3':	printf ("Beliebige Taste druecken zum Beenden");
+						break;
+							
+			default: 	printf ("Sie haben eine ungueltige Eingabe gemacht\n");
+						break;
+		}
+		getch();
+
+	} while (zahl !='3');
+}
+
+
+int main()
+{
+	CLRSCR();
+	printf ("\nHier ist die Funktion main\n");
+	menue();
+}
+
